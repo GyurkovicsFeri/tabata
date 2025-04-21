@@ -47,6 +47,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
       appBar: AppBar(
         elevation: 0,
         flexibleSpace: Container(
@@ -129,7 +130,12 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                         const SizedBox(height: 16),
                         Text(
                           'Round ${workout.currentRound} of ${workout.template.rounds}',
-                          style: Theme.of(context).textTheme.titleLarge,
+                          style:
+                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onPrimaryContainer,
+                                  ),
                         ),
                       ],
                     ),
@@ -188,7 +194,14 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                               ),
                               child: Text(
                                 state.isRunning ? 'Pause' : 'Resume',
-                                style: const TextStyle(color: Colors.black),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondaryContainer,
+                                    ),
                               ),
                             ),
                           ),
@@ -202,7 +215,9 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                 Navigator.pop(context);
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.black,
+                                backgroundColor: Theme.of(context)
+                                    .colorScheme
+                                    .secondaryContainer,
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 32, vertical: 16),
                                 textStyle: const TextStyle(
@@ -212,9 +227,12 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
-                              child: const Text(
+                              child: Text(
                                 'Stop',
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSecondaryContainer),
                               ),
                             ),
                           ),

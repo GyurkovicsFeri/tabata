@@ -76,6 +76,7 @@ class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
       appBar: AppBar(
         elevation: 0,
         flexibleSpace: Container(
@@ -107,10 +108,15 @@ class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
             margin: const EdgeInsets.only(right: 16),
             child: ElevatedButton.icon(
               onPressed: _saveTemplate,
-              icon: const Icon(Icons.save, color: Colors.white),
-              label: const Text('Save', style: TextStyle(color: Colors.white)),
+              icon: Icon(Icons.save,
+                  color: Theme.of(context).colorScheme.onSecondaryContainer),
+              label: Text('Save',
+                  style: TextStyle(
+                      color:
+                          Theme.of(context).colorScheme.onSecondaryContainer)),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor:
+                    Theme.of(context).colorScheme.secondaryContainer,
                 elevation: 2,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
@@ -131,6 +137,9 @@ class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
                 labelText: 'Template Name',
                 border: OutlineInputBorder(),
               ),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
             ),
             const SizedBox(height: 16),
             _buildDurationField(
@@ -177,7 +186,13 @@ class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
       decoration: InputDecoration(
         labelText: label,
         border: const OutlineInputBorder(),
+        labelStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context).colorScheme.onPrimaryContainer,
+            ),
       ),
+      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: Theme.of(context).colorScheme.onPrimaryContainer,
+          ),
       keyboardType: TextInputType.number,
     );
   }

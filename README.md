@@ -9,6 +9,14 @@ A simple and effective Tabata timer application.
 - Clean and intuitive interface
 - Sound notifications
 
+## Screenshots
+
+<p float="left">
+  <img src="screenshots/Screenshot_1.png" width="300" />
+  <img src="screenshots/Screenshot_2.png" width="300" /> 
+</p>
+
+
 ## Getting Started
 
 1. Clone the repository
