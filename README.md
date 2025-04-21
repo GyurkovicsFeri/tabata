@@ -1,16 +1,20 @@
-# tabata
+# Tabata Timer
 
-A new Flutter project.
+A simple and effective Tabata timer application.
+
+## Features
+
+- Customizable work and rest intervals
+- Adjustable number of rounds
+- Clean and intuitive interface
+- Sound notifications
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. Clone the repository
+2. Install dependencies
+3. Run the application
 
-A few resources to get you started if this is your first Flutter project:
+## License
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
