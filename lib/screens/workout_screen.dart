@@ -113,7 +113,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                               .textTheme
                               .headlineLarge
                               ?.copyWith(
-                                color: Colors.black,
+                                color: Colors.black.withOpacity(0.8),
                               ),
                         ),
                         const SizedBox(height: 16),
@@ -123,7 +123,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                               .textTheme
                               .displayLarge
                               ?.copyWith(
-                                color: Colors.black,
+                                color: Colors.black.withOpacity(0.8),
                               ),
                         ),
                         const SizedBox(height: 16),
@@ -186,7 +186,10 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
-                              child: Text(state.isRunning ? 'Pause' : 'Resume'),
+                              child: Text(
+                                state.isRunning ? 'Pause' : 'Resume',
+                                style: const TextStyle(color: Colors.black),
+                              ),
                             ),
                           ),
                         if (!workout.isCompleted)
@@ -209,7 +212,10 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
-                              child: const Text('Stop'),
+                              child: const Text(
+                                'Stop',
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ),
                       ],

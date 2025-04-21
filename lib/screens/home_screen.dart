@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
               return ListTile(
                 title: Text(template.name),
                 subtitle: Text(
-                  '${template.rounds} rounds • ${template.workDuration}s work • ${template.restDuration}s rest',
+                  '${template.rounds} rounds • ${template.workDuration}s work • ${template.restDuration}s rest • ${template.totalDuration ~/ 60}m total',
                 ),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,

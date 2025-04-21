@@ -67,3 +67,11 @@ enum WorkoutPhase {
   @HiveField(4)
   completed
 }
+
+extension SumOfWorkout on WorkoutTemplate {
+  int get totalDuration {
+    return warmupDuration +
+        (workDuration + restDuration) * rounds +
+        cooldownDuration;
+  }
+}

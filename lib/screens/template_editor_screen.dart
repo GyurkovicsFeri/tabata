@@ -157,6 +157,11 @@ class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
               controller: _cooldownController,
               label: 'Cool Down Duration (seconds)',
             ),
+            const SizedBox(height: 16),
+            Text(
+              'Total Duration: ${_calculateTotalDuration()} seconds (${_calculateTotalDuration() ~/ 60} minutes)',
+              style: const TextStyle(fontSize: 16),
+            ),
           ],
         ),
       ),
@@ -175,5 +180,21 @@ class _TemplateEditorScreenState extends State<TemplateEditorScreen> {
       ),
       keyboardType: TextInputType.number,
     );
+  }
+
+  int _calculateTotalDuration() {
+    final template = WorkoutTemplate(
+      id: widget.templateId,
+      name: _nameController.text,
+      warmupDuration: int.parse(_warmupController.text),
+      workDuration: int.parse(_workController.text),
+      restDuration: int.parse(_restController.text),
+      rounds: int.parse(_roundsController.text),
+      cooldownDuration: int.parse(_cooldownController.text),
+    );
+
+    return template.warmupDuration +
+        (template.workDuration + template.restDuration) * template.rounds +
+        template.cooldownDuration;
   }
 }
