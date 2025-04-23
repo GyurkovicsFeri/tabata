@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 import '../models/workout_template.dart';
 import '../models/active_workout.dart';
 import '../services/audio_service.dart';
@@ -63,6 +64,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   }
 
   void _onStartWorkout(StartWorkout event, Emitter<WorkoutState> emit) {
+    WakelockPlus.enable();
     final activeWorkout = ActiveWorkout(template: event.template);
     emit(WorkoutState(activeWorkout: activeWorkout, isRunning: true));
     _audioService.playPhaseStart();
@@ -70,6 +72,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   }
 
   void _onPauseWorkout(PauseWorkout event, Emitter<WorkoutState> emit) {
+    WakelockPlus.disable();
     _timer?.cancel();
     if (state.activeWorkout != null) {
       state.activeWorkout!.isPaused = true;
@@ -78,6 +81,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   }
 
   void _onResumeWorkout(ResumeWorkout event, Emitter<WorkoutState> emit) {
+    WakelockPlus.enable();
     if (state.activeWorkout != null) {
       state.activeWorkout!.isPaused = false;
       emit(state.copyWith(isRunning: true));
@@ -87,6 +91,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
   }
 
   void _onStopWorkout(StopWorkout event, Emitter<WorkoutState> emit) {
+    WakelockPlus.disable();
     _timer?.cancel();
     emit(WorkoutState());
   }
@@ -132,6 +137,7 @@ class WorkoutBloc extends Bloc<WorkoutEvent, WorkoutState> {
         _timer?.cancel();
         break;
       case WorkoutPhase.completed:
+        WakelockPlus.disable();
         break;
     }
     emit(state.copyWith());

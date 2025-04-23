@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -18,7 +19,18 @@ void main() async {
   Hive.registerAdapter(WorkoutPhaseAdapter());
   await Hive.openBox<WorkoutTemplate>('templates');
 
+  _initializeAudioPlayer();
+
   runApp(const MyApp());
+}
+
+void _initializeAudioPlayer() {
+  AudioPlayer.global.setAudioContext(AudioContextConfig(
+    route: AudioContextConfigRoute.system,
+    duckAudio: false,
+    respectSilence: false,
+    stayAwake: false,
+  ).build());
 }
 
 class MyApp extends StatelessWidget {
